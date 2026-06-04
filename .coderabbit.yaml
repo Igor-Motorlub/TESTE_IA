@@ -1,0 +1,24 @@
+language: "pt"
+
+reviews:
+  high_level_summary: true
+
+path_filters:
+  - "!venv/**"
+  - "!__pycache__/**"
+  - "!*.db"
+
+path_instructions:
+  - path: "app/models.py"
+    instructions: >
+      Revise os modelos SQLAlchemy verificando nomes de tabelas, tipos de
+      colunas, indices, valores padrao e compatibilidade com SQLite.
+  - path: "app/schemas.py"
+    instructions: >
+      Revise os schemas Pydantic garantindo validacoes claras, campos opcionais
+      corretos para atualizacao e uso de from_attributes no schema de resposta.
+  - path: "app/main.py"
+    instructions: >
+      Revise endpoints FastAPI com foco em contratos HTTP, response_model,
+      status codes, tratamento de 404, injecao de dependencias e clareza das
+      docstrings.
