@@ -21,7 +21,7 @@ def startup() -> None:
     models.Base.metadata.create_all(bind=engine)
 
 
-@app.get("/")
+@app.get("/", response_model=schemas.RootResponse)
 def read_root() -> dict[str, str]:
     """Return a welcome message for the API."""
     return {"message": "Bem-vindo a Task Management API"}
@@ -86,8 +86,9 @@ def update_task(
     for field, value in update_data.items():
         setattr(task, field, value)
 
-    db.commit()
-    db.refresh(task)
+    if update_data:
+        db.commit()
+        db.refresh(task)
     return task
 
 

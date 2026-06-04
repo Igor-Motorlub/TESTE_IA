@@ -21,6 +21,12 @@ class TaskUpdate(BaseModel):
     completed: Optional[bool] = None
 
 
+class RootResponse(BaseModel):
+    """Serialize the root endpoint response."""
+
+    message: str
+
+
 class TaskResponse(BaseModel):
     """Serialize task data returned by the API."""
 
